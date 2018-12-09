@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../arduinoStyle.css">
+	<title>Arduino Tutorial | Nightlight | Stage 4</title>
+</head>
+
+<body>
+
+	<header>
+		<a href="../index.html"><img id="logo" src="../images/seehowlogo.png" alt="seeHOW logo"></a>
+
+		<nav>
+			<a href="../index.html">HOME</a>
+			<a class="active" href="nightlight.html">NIGHTLIGHT</a>
+			<a href="burglaralarm.html">BURGLAR ALARM</a>
+			<a href="about.html">ABOUT</a>
+		</nav>
+		<div id="subnav">
+			<a href="nightlightstage1.html">Stage 1</a>
+			<a href="nightlightstage2.html">Stage 2</a>
+			<a href="nightlightstage3.html">Stage 3</a>
+			<a href="nightlightstage4.html" class="active">Stage 4</a>
+		</div>
+
+	</header>
+	<article>
+
+		<h1>Seriously CURIOUS!</h1>
+		<h2 class="stage">Nightlight: Stage 4</h2>
+
+		<p>1) This stage of the nightlight build is to get your LED to use different levels of brightness depending on how dark it is. Up until now you’ve programmed the LED to either turn on or off, but now we want it to turn on just a little bit if it’s only a little bit dark, and turn on a lot if it’s really dark. This step does not require any additional hardware, and just some different code to get it to send a signal of varying strength to the LED depending on the amount of light the LDR is sensing. </p>
+
+		<p>2) <b>Replace</b> the existing code with the code below in the Arduino software. Replace the number in (light_reading < 985) with the number you used in Stage 3. Now change the number '850' used in the line “else if (light_reading < 850)” to a lower number than your input for light_reading < __ from Stage 3. <em>You may need to experiment using the Serial Monitor to find the best number.</em></p>
+    
+        <div class="steps">
+		<div id="code">
+<pre>
+<span class="blue">int</span> LED_Pin = 3;<span class="grey"> //change to the pin your LED is connected to</span>
+<span class="blue">int</span> LDR_Pin = A1;<span class="grey"> //change to the pin your LDR is connected to</span>
+<span class="blue">int</span> light_reading;
+
+<span class="blue">void</span> <span class="green">setup</span>() {
+    <span class="orange">pinMode</span>(LED_Pin, <span class="blue">OUTPUT</span>);
+    <span class="orange">pinMode</span>(LDR_Pin, <span class="blue">INPUT</span>);
+    <span class="orange">Serial.begin</span>(9600);
+}
+
+<span class="blue">void</span> <span class="green">loop</span>() {
+    light_reading = <span class="orange">analogRead</span>(LDR_Pin);
+    <span class="orange">Serial.println</span>(light_reading);<span class="grey"> //displays the light reading value</span>
+    <span class="blue">if</span>(light_reading < 985) {<span class="grey"> //change to your light value in normal conditions</span>
+        <span class="orange">analogWrite</span>(LED_Pin, 250);<span class="grey"> // sets the LED brightnesss</span>
+    <span class="blue">} else if </span>(light_reading < 850) {<span class="grey"> //change to your light value in low conditions</span>
+        <span class="orange">analogWrite</span>(LED_Pin, 100);<span class="grey"> // sets the LED brightnesss</span>
+    }<span class="blue"> else </span><span class="orange">digitalWrite</span>(LED_Pin, <span class="blue">LOW</span>);<span class="grey"> //turns LED off</span>
+    <span class="orange">delay</span>(500);
+}
+
+</pre>  
+        </div>
+        </div>
+
+		<p>3) Using the software, go Sketch > Verify/Compile to compile the code and save it as “nightlight.ino”. Next go Sketch > Upload to send it to your Arduino board. Once this has been completed, and program should return “Done uploading.” </p>
+ <div class="steps">
+		<p>4) You should now have a fully operational nightlight which changes the brightness of the LED as the LDR measures differing amounts of light. Using the Serial Monitor, test that the brightness of the LED changes when the light levels change around the values you have set in your code.</p>
+
+		<p>5) By adjusting the value in the lines “analogWrite(LED_Pin, 250)” you can adjust the brightness of the LED. Any value between 1 and 256 can be used. Experiment with different levels of brightness. You can also choose to have the light brighter in low light levels - it is up to you - you are in control!</p>
+	</div>	
+		<h2>More cool THINGS</h2>
+		<ol>
+			<li>Add a third level of brightness into your code</li>
+			<li>Set a time(delay) for the light to turn on or off</li>
+			<li>Add a alarm to sound after a set time period of the light being on</li>
+		</ol>
+        
+
+            <figcaption>Whats going on in this animation?</figcaption>
+            <img src="../images/nightlightstage4/yellow_led.gif" alt="stage 1 GIF">
+
+        <p>Can you work out how the circuit is being changed in this animation that makes the green LED turn yellow?</p>
+        
+		<p><b>Nice work! You have finished!</b></p>
+		
+		<h2 id="paginationLeft">
+			<a href="nightlightstage3.html">Previous stage</a>
+		</h2>
+
+	</article>
+
+	<footer>
+		<ul class="footerLinks">
+			<li><b><a href="../index.html">HOME</a></b></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="nightlight.html">NIGHTLIGHT</a></b></li>
+			<li><a href="nightlightstage1.html">Stage 1: Start it UP!</a></li>
+			<li><a href="nightlightstage2.html">Stage 2: Change it UP!</a></li>
+			<li><a href="nightlightstage3.html">Stage 3: Light it UP!</a></li>
+			<li><a href="nightlightstage4.html">Stage 4: Seriously CURIOUS!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="burglaralarm.html">BURGLAR ALARM</a></b></li>
+			<li><a href="burglaralarmstage1.html">Stage 1: Sound it UP!</li>
+			<li><a href="burglaralarmstage2.html">Stage 2: Sense it UP!</a></li>
+			<li><a href="burglaralarmstage3.html">Stage 3: Make some NOISE!</a></li>
+			<li><a href="burglaralarmstage4.html">Stage 4: Set it OFF!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="about.html">ABOUT</a></b></li>
+		</ul>
+	</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../arduinoStyle.css">
+	<title>Arduino Tutorial | Nightlight | Stage 2</title>
+</head>
+
+<body>
+
+	<header>
+		<a href="../index.html"><img id="logo" src="../images/seehowlogo.png" alt="seeHOW logo"></a>
+
+		<nav>
+			<a href="../index.html">HOME</a>
+			<a class="active" href="nightlight.html">NIGHTLIGHT</a>
+			<a href="burglaralarm.html">BURGLAR ALARM</a>
+			<a href="about.html">ABOUT</a>
+		</nav>
+		<div id="subnav">
+			<a href="nightlightstage1.html">Stage 1</a>
+			<a href="nightlightstage2.html" class="active">Stage 2</a>
+			<a href="nightlightstage3.html">Stage 3</a>
+			<a href="nightlightstage4.html">Stage 4</a>
+		</div>
+	</header>
+
+	<article>
+
+		<h1>Change it UP!</h1>
+		<h2 class="stage">Nightlight: Stage 2</h2>
+        
+        <div class="equipment">
+            <h2>You will need</h2>
+        <ul>
+			<li>1 x black cable</li>
+			<li>1 x red cable</li>
+			<li>1 x white cable</li>
+			<li>1 x breadboard</li>
+			<li>1 x LDR (light dependent resistor)</li>
+			<li>1 x resistor (400 - 12,000 ohm rating)</li>
+        </ul>
+        </div>
+       
+            <figcaption>This animation shows the steps for this stage</figcaption>
+            <img src="../images/nightlightstage2/1080p_LDR.gif" alt="stage 2 GIF">
+
+		<p>1) Unplug the USB cable from your Arduino board.</p>
+		
+		<div class="steps">
+			<img src="../images/nightlightstage2/step2.png" alt="step 2 fritzing">
+			<p>2) Plug the LDR into the breadboard, with the 2 pins on different rows, same as for the LED in Stage 1.</p>
+        </div>
+		
+		<div class="steps">
+			<img src="../images/nightlightstage2/step3.png" alt="step 3 fritzing">
+			<p>3) Plug in the resistor with one end in the same row as one end of the LDR and the other end in a different row to the other end of the LDR.</p>
+        </div>
+		
+		<div class="steps">
+        	<img src="../images/nightlightstage2/step_4.gif" alt="step 4 gif">
+			<p>4) Plug the white cable into the breadboard on the same row as where the LDR and the resistor are plugged into. Plug the other end into a pin in the “Analog In” section of Arduino board. These are specified by the names A0-A5 (remember the value of the pin you’ve used).</p>
+        </div>
+		
+        <div class="steps">
+			<img src="../images/nightlightstage2/step5.png" alt="step 5 fritzing">
+			<p>5) Find the end of the LDR which is not plugged into the same row as the white cable. Plug one end of the black cable into that row.  Plug the other end of the black cable into the pin labelled GND (ground) on the side of the Arduino board labelled “Power.”</p>
+        </div>
+        
+		<div class="steps">
+			<img src="../images/nightlightstage2/step6.png" alt="Step 6 fritzing">
+			<p>6) Find the end of the resistor which is not plugged into the same row as the white cable. Plug one end of the black cable into that row. Plug the other end of the red cable into the pin labelled 5V on the arduino board.</p>
+        </div>
+		
+		<div class="steps">
+		<p>7) Check that your Arduino board and breadboards look like the picture above. </p>
+
+		<p>8) Plug your Arduino board back into your computer using the mini-USB cable. The light should turn on because it’s still running the program you gave it earlier.</p>
+
+		<p>9) Now we’ll set the program up to tell us how much light the LDR is measuring.  We will setup the Arduino board to record the light coming in from the LDR (input) and display these on the screen. </p>
+
+		<p>10) Go back to the Arduino software. Open the nightlight.ino file you were using before and delete the text in the window. Copy and paste the following text (code) into your Arduino software:</p>
+		</div>
+
+		<div id="code">
+<pre>
+<span class="blue">int</span> LED_Pin = 3;<span class="grey"> //change to the pin your LED is connected to</span>
+<span class="blue">int</span> LDR_Pin = A1;<span class="grey"> //change to the pin your LDR is connected to</span>
+<span class="blue">int</span> light_reading;
+
+<span class="blue">void</span> <span class="green">setup</span>() {
+    <span class="orange">pinMode</span>(LED_Pin, <span class="blue">OUTPUT</span>);
+    <span class="orange">pinMode</span>(LDR_Pin, <span class="blue">INPUT</span>);
+    <span class="orange">Serial.begin</span>(9600);
+}
+
+<span class="blue">void</span> <span class="green">loop</span>() {
+    light_reading = <span class="orange">analogRead</span>(LDR_Pin);
+    <span class="orange">Serial.println</span>(light_reading);<span class="grey"> //displays light reading value</span>
+    <span class="orange">delay</span>(500);
+}
+
+</pre>  
+        </div>
+		
+		<div class="steps">
+		<p>11) Change the LED_Pin = __ to the correct number of the pin you plugged your red cable into on the Arduino board (ie. change the ‘3’ to the correct value for your Arduino board). Change the LDR_Pin = __ to the correct number of the pin you plugged your white cable into on the Arduino board. (ie. change the ‘A1’ to the correct value for your Arduino board).</p>
+
+		<p>12) Now, go Sketch > Verify/Compile to compile the code and File > Save and save it as “nightlight.ino”. Next go Sketch > Upload to send it to your Arduino board. Once this has been completed, and program should show “Done uploading.” </p>
+
+		<p>13) Open the Serial Monitor window (Tools > Serial Monitor) to view the light reading value. Numbers should be scrolling down the window that pops up. This is the light reading coming from the LDR to your computer via the Arduino board. Write down what the number is when the LDR as it is now - sitting in front of you. The number will vary by about 5 each time, so you don’t need to be accurate. Test that covering the LDR with your hand makes the values change. Taking your hand away the numbers should go back to where they were before. </p>
+            
+        <p>14) If the numbers go up when your hand covers the LDR, swap over the two cables which you have plugged into the "GND" and the "5V" pins in the Arduino Board. Upload your code to the Arduino Board again and test that the number goes down when you cover it with your hand.</p>
+		</div>
+
+		<h2>Not Working? Try This!</h2>
+        
+		<p>If you don’t get any numbers scrolling, or only get ‘0’ showing, please follow these steps to find out why:</p>
+
+		<ol>
+			<li>Check your code.</li>
+			<ol type="a">
+				<li>Does it compile? If not check the brackets, extra letters etc that are out of place.</li>
+				<li>Is it identifying the correct LED_Pin and LDR_Pin numbers?</li>
+			</ol>
+			<li>Check the connections on the breadboard.</li>
+			<ol type="a">
+				<li>Check your breadboard looks like the picture at the end of step 7. If it does and your light is still not working, check that:</li>
+				<ol type="i">
+					<li>All the pins are pushed in.</li>
+					<li>Try using a different LDR.</li>
+					<li>Try using different red, black and white cables.</li>
+					<li>If none of that gets your light working, ask your teacher/demonstrator for assistance.</li>
+				</ol>
+			</ol>
+		</ol>
+		<h2 id="paginationLeft">
+			<a href="nightlightstage1.html">Previous stage</a>
+		</h2>
+
+		<h2 id="pagination">
+			<a href="nightlightstage3.html">Next stage</a>
+		</h2>
+
+	</article>
+
+	<footer>
+		<ul class="footerLinks">
+			<li><b><a href="../index.html">HOME</a></b></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="nightlight.html">NIGHTLIGHT</a></b></li>
+			<li><a href="nightlightstage1.html">Stage 1: Start it UP!</a></li>
+			<li><a href="nightlightstage2.html">Stage 2: Change it UP!</a></li>
+			<li><a href="nightlightstage3.html">Stage 3: Light it UP!</a></li>
+			<li><a href="nightlightstage4.html">Stage 4: Seriously CURIOUS!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="burglaralarm.html">BURGLAR ALARM</a></b></li>
+			<li><a href="burglaralarmstage1.html">Stage 1: Sound it UP!</li>
+			<li><a href="burglaralarmstage2.html">Stage 2: Sense it UP!</a></li>
+			<li><a href="burglaralarmstage3.html">Stage 3: Make some NOISE!</a></li>
+			<li><a href="burglaralarmstage4.html">Stage 4: Set it OFF!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="about.html">ABOUT</a></b></li>
+		</ul>
+	</footer>
+
+</body>
+
+</html>

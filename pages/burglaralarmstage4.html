@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../arduinoStyle.css">
+	<title>Arduino Tutorial | Burglar Alarm | Stage 4</title>
+</head>
+
+<body>
+
+	<header>
+		<a href="../index.html"><img id="logo" src="../images/seehowlogo.png" alt="seeHOW logo"></a>
+
+		<nav>
+			<a href="../index.html">HOME</a>
+			<a href="nightlight.html">NIGHTLIGHT</a>
+			<a class="active" href="burglaralarm.html">BURGLAR ALARM</a>
+			<a href="about.html">ABOUT</a>
+		</nav>
+		<div id="subnav">
+			<a href="burglaralarmstage1.html">Stage 1</a>
+			<a href="burglaralarmstage2.html">Stage 2</a>
+			<a href="burglaralarmstage3.html">Stage 3</a>
+			<a href="burglaralarmstage4.html" class="active">Stage 4</a>
+		</div>
+	</header>
+
+	<article>
+
+		<h1>Set it OFF</h1>
+		<h2 class="stage">Burglar alarm: Stage 4</h2>
+
+		<h2>You will need</h2>
+		<ul>
+			<li>1 x LED</li>
+			<li>1 x resistor (220 ohm rating)</li>
+			<li>1 x red cable</li>
+			<li>1 x black cable</li>
+		</ul>
+
+        <p id="vidcaption">This animation shows the sequence of steps for this stage</p>
+            <video autoplay muted loop poster="../images/burglaralarmstage4/stage_4_poster.png">
+                <source src="../images/burglaralarmstage4/stage_4_GIF.mp4" type="video/mp4">
+                <source src="../images/burglaralarmstage4/stage_4_GIF.webm" type="video/webm">
+                Oops! Your browser does not support mp4 or webm html5 videos.
+            </video>
+		
+		<div class="steps">
+            <img src="../images/burglaralarmstage4/Stage4.1.3_Alarm.jpg" alt="Step 1 Image">
+		<p>1) Connect LED to breadboard, with each pin across different rows but down the same column. Now connect one pin of your resistor along the same row as a pin of your LED. Connect the other pin of your resistor somewhere along the same column of the first pin. Now connect one wire to your breadboard on the same row as the resistor pin that is on a row by itself. Connect that same wire to a free GND pin on your Arduino. Connect your second cable wire to the other end of the LED and connect it to a numbered pin on the Arduino.</p>
+</div>
+		
+		<div class="steps">
+			<p>2) <b>Replace</b> the existing code with the code below in the Arduino software. </p>
+			
+<div id="code">
+<pre>
+<span class="blue">int</span> BUZZ_Pin = 12; <span class="grey">//change to the pin your speaker is connected into</span>
+<span class="blue">int</span> PIR_Pin = 4; <span class="grey">//change to the pin your PIR is connected into</span>
+<span class="blue">int</span> PIR_State = <span class="blue">LOW</span>;
+<span class="blue">int</span> PIR_Value = 0;
+<span class="blue">int</span> LED_Pin = 9; <span class="grey">//change to the pin your LED is connected into</span>
+
+<span class="blue">void</span> <span class="green">setup</span>() {
+    <span class="orange">pinMode</span>(BUZZ_Pin, <span class="blue">OUTPUT</span>);
+    <span class="orange">pinMode</span>(PIR_Pin, <span class="blue">INPUT</span>);
+    <span class="orange">pinMode</span>(LED_Pin, <span class="blue">OUTPUT</span>);
+    <span class="orange">Serial.begin</span>(9600);
+}
+
+<span class="blue">void</span> <span class="green">loop</span>() {
+    PIR_Value = <span class="orange">digitalRead</span>(PIR_Pin);
+    <span class="green">if</span>(PIR_Value == <span class="blue">HIGH</span>){
+    <span class="orange">digitalWrite</span>(LED_Pin, <span class="blue">HIGH</span>); <span class="grey">//turns the LED on when a burglar is detected</span>
+      <span class="orange">digitalWrite</span>(BUZZ_Pin, <span class="blue">HIGH</span>); <span class="grey">//turns speaker alarm on</span>
+      <span class="orange">delay</span>(50);
+      <span class="orange">digitalWrite</span>(BUZZ_Pin, <span class="blue">LOW</span>); <span class="grey">//turns speaker alarm off</span>
+      <span class="orange">delay</span>(50);
+      <span class="green">if</span>(PIR_State == <span class="blue">LOW</span>){
+        <span class="orange">Serial.println</span>(<span class="blue">"Intruder Alert!"</span>); <span class="grey">//displays message when a burglar is detected</span>
+        PIR_State = <span class="blue">HIGH</span>;
+      }
+    }
+    <span class="green">else</span>{
+      <span class="green">if</span>(PIR_State = <span class="blue">HIGH</span>){
+        <span class="orange">digitalWrite</span>(LED_Pin, <span class="blue">LOW</span>); <span class="grey">//turns the LED off when a burglar is detected</span>
+        <span class="orange">Serial.println</span>(<span class="blue">"Intruder no longer detected"</span>); <span class="grey">//displays message when no burglar is detected</span>
+        PIR_State = <span class="blue">LOW</span>;
+      }
+    }
+}
+
+</pre>
+</div>
+			</div>
+			<div class="steps">
+			<p>3) Change the BUZZ_Pin = __, PIR_Pin = __ and LED_Pin = __ numbers to show the correct pin you plugged your cable from the speaker and the PIR sensor into on the Arduino board. </p>
+			
+			<p>4) Go Sketch > Verify/Compile to compile the code and save it as “burglaralarm.ino”. Next go Sketch > Upload to send it to your Arduino board. Once this has been completed, and program should return “Done uploading.” The alarm should now sound and the LED should turn on when an intruder is detected! (Yay!)</p>
+		</div>
+        
+        <h2>Power it UP</h2>
+    <p>Once your burglar alarm is fully operational, you can unplug it from the mini-USB cable and make it battery powered using the battery cable and the 9V battery. This allows the burglar alarm to be fully portable, and you can now set it up anywhere you wish!</p>
+        <p><strong>Nice work! You have finished!</strong></p>
+        <p><strong>Now hide your burglar alarm close to your valuables!</strong></p>
+			<h2>Not Working? Try This!</h2>
+			<ol>
+				<li>Take the LED out, turn it round, and plug it back in. Does the light work now?</li>
+				<li>Check your code.</li>
+				<ol type="a">
+					<li>Does it compile? If not check the brackets, extra letters etc that are out of place.</li>
+					<li>Is it identifying the correct BUZZ_Pin, PIR_Pin and LED_Pin numbers? </li>
+				</ol>
+				<li>Check the connections on the breadboard.</li>
+				<ol type="a">
+					<li>Check your breadboard looks like the picture at the end of step 1. If it does and you still do not get words in the window, check that:</li>
+					<ol type="i">
+						<li>All the pins are pushed in.</li>
+						<li>Try using a different LED.</li>
+						<li>Try using different cables. </li>
+						<li>If none of that gets your light working, ask your teacher/demonstrator for assistance.</li>
+					</ol>
+				</ol>
+			</ol>
+			
+		<h2 id="paginationLeft">
+			<a href="burglaralarmstage3.html">Previous stage</a>
+		</h2>
+
+		</article>
+
+	<footer>
+		<ul class="footerLinks">
+			<li><b><a href="../index.html">HOME</a></b></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="nightlight.html">NIGHTLIGHT</a></b></li>
+			<li><a href="nightlightstage1.html">Stage 1: Start it UP!</a></li>
+			<li><a href="nightlightstage2.html">Stage 2: Change it UP!</a></li>
+			<li><a href="nightlightstage3.html">Stage 3: Light it UP!</a></li>
+			<li><a href="nightlightstage4.html">Stage 4: Seriously CURIOUS!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="burglaralarm.html">BURGLAR ALARM</a></b></li>
+			<li><a href="burglaralarmstage1.html">Stage 1: Sound it UP!</li>
+			<li><a href="burglaralarmstage2.html">Stage 2: Sense it UP!</a></li>
+			<li><a href="burglaralarmstage3.html">Stage 3: Make some NOISE!</a></li>
+			<li><a href="burglaralarmstage4.html">Stage 4: Set it OFF!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="about.html">ABOUT</a></b></li>
+		</ul>
+	</footer>
+
+	</body>
+
+	</html>

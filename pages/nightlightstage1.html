@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../arduinoStyle.css">
+	<title>Arduino Tutorial | Nightlight | Stage 1</title>
+</head>
+
+<body>
+
+	<header>
+		<a href="../index.html"><img id="logo" src="../images/seehowlogo.png" alt="seeHOW logo"></a>
+
+		<nav>
+			<a href="../index.html">HOME</a>
+			<a class="active" href="nightlight.html">NIGHTLIGHT</a>
+			<a href="burglaralarm.html">BURGLAR ALARM</a>
+			<a href="about.html">ABOUT</a>
+		</nav>
+		<div id="subnav">
+			<a href="nightlightstage1.html" class="active">Stage 1</a>
+			<a href="nightlightstage2.html">Stage 2</a>
+			<a href="nightlightstage3.html">Stage 3</a>
+			<a href="nightlightstage4.html">Stage 4</a>
+		</div>
+	</header>
+
+	<article>
+        
+		<h1>Start it UP!</h1>
+		
+		<h2 class="stage">Nightlight: Stage 1</h2>
+        
+        <h2>You will need</h2>
+          <ul>
+			 <li>1 x black cable</li>
+			 <li>1 x red cable</li>
+			 <li>1 x breadboard</li>
+			 <li>1 x Arduino board</li>
+			 <li>1 x LED</li>
+			 <li>1 x resistor (220 ohm rating)</li>
+			 <li>1 x mini-USB cable</li>
+		</ul>
+
+            <figcaption>This animation shows the steps for this stage</figcaption>
+            <img src="../images/nightlightstage1/1080p_LED.gif" alt="stage 1 GIF">
+
+		<p>1) The first step is to ensure the Arduino Software has been installed on your computer. This is something for the teacher/demonstrator to do. Check with them that it has been done.</p>
+		
+		<div class="steps">
+			<img src="../images/nightlightstage1/step_2.png" alt="Step 2image">
+			<p>2) Plug the LED into the breadboard with the 2 pins in different rows.</p>
+        </div>
+	
+		<div class="steps">
+			<img src="../images/nightlightstage1/step3.png" alt="Step 3 image">
+			<p>3) Plug the resistor into the breadboard with one end of the resistor on the same row as one pin of the LED.</p>
+        </div>
+	
+		<div class="steps">
+			<img src="../images/nightlightstage1/step4.png" alt="Step 4 image">
+			<p>4) Plug one end of the black cable into the breadboard in the <b>same row as the end of the resistor</b> not plugged into the LED.</p>
+        </div>
+		
+		<div class="steps">
+			<img src="../images/nightlightstage1/step_5.jpg" alt="Step 2image">
+			<p>5) Plug one end of the red cable into the breadboard in the same row as the end of the LED not plugged into the resistor. Your breadboard should look like the picture below.</p>
+        </div>
+
+		<div class="steps">
+			 <img src="../images/nightlightstage1/step_6+7.png" alt="steps 6 and 7">
+			<p>6) Plug the other end of the black cable into the pin labelled GND (ground) on the side of the Arduino board labelled “Digital (PWM~)”.</p>
+		</div>
+	
+		<div class="steps">
+			<p>7) Plug the other end of the red cable into any one of the pins labelled 2-13 on the Arduino board (remember the number of the pin you’ve used).</p>
+		</div>
+	
+		<div class="steps">
+			 <img src="../images/nightlightstage1/step_8.jpg" alt="mini-usb end. Picture by Anil Öztas">
+			<p>8) Plug the Arduino board into your computer using the mini-USB cable.</p><p><em>Picture by Anil Öztas</em></p>
+        </div>
+		
+		<div class="steps">
+			<p>9) Open the Arduino Software. Ask your demonstrator if you cannot find it. Open a new file and delete the text in the window. Copy and paste the following text (code) into the window (Need help? Ask your demonstrator):</p>
+		</div>
+        <div class="steps">
+		<div id="code">
+<pre>
+<span class="blue">int</span> LED_Pin = 3;<span class="grey"> //change to the pin your LED is connected with</span>
+
+<span class="blue">void</span> <span class="green">setup</span>() {
+    <span class="orange">pinMode</span>(LED_Pin, <span class="blue">OUTPUT</span>);
+}
+
+<span class="blue">void</span> <span class="green">loop</span>() {
+    <span class="orange">digitalWrite</span>(LED_Pin, <span class="blue">HIGH</span>);<span class="grey"> //turns LED on</span>
+}
+
+
+
+
+</pre>
+		</div>
+		<p>10) Change the LED_Pin = __ to the number of the pin you plugged your red (positive) cable into on the Arduino board (ie. change the ‘3’ to the correct value for your Arduino board). Using the Arduino software, go Sketch > Verify/Compile to compile your code and go File > Save and save it as “nightlight.ino”. Next go Sketch > Upload to send it to your Arduino board. Once this has been completed, and program should return “Done uploading” and your light should switch on!</p>
+        </div>
+
+		<h2>Not Working? Try This!</h2>
+		<ol>
+			<li>Take the LED out, turn it round, and plug it back in the same place. Does the light work now?</li>
+			<li>Check your code.</li>
+			<ol type="a">
+				<li>Does it compile? If not check the brackets, extra letters etc that are out of place.</li>
+				<li>Is it identifying the correct LED_Pin number? Check that “int LED_Pin = " has the number that you plugged the red cable into on the Arduino board.</li>
+			</ol>
+			<li>Check the connections on the breadboard.</li>
+			<ol type="a">
+				<li>Check your breadboard looks like the picture at the end of step 4. If it does and your light is still not working, check that:</li>
+				<ol type="i">
+					<li>All the pins are pushed in.</li>
+					<li>Try using a different LED.</li>
+					<li>Try using different red and black cables. </li>
+					<li>If none of that gets your light working, ask your teacher/demonstrator for assistance.</li>
+				</ol>
+			</ol>
+		</ol>
+		
+		<h2 id="pagination">
+			<a href="nightlightstage2.html">Next stage</a>
+		</h2>
+		
+		
+
+	</article>
+	
+	<footer>
+		<ul class="footerLinks">
+			<li><b><a href="../index.html">HOME</a></b></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="nightlight.html">NIGHTLIGHT</a></b></li>
+			<li><a href="nightlightstage1.html">Stage 1: Start it UP!</a></li>
+			<li><a href="nightlightstage2.html">Stage 2: Change it UP!</a></li>
+			<li><a href="nightlightstage3.html">Stage 3: Light it UP!</a></li>
+			<li><a href="nightlightstage4.html">Stage 4: Seriously CURIOUS!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="burglaralarm.html">BURGLAR ALARM</a></b></li>
+			<li><a href="burglaralarmstage1.html">Stage 1: Sound it UP!</li>
+			<li><a href="burglaralarmstage2.html">Stage 2: Sense it UP!</a></li>
+			<li><a href="burglaralarmstage3.html">Stage 3: Make some NOISE!</a></li>
+			<li><a href="burglaralarmstage4.html">Stage 4: Set it OFF!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="about.html">ABOUT</a></b></li>
+		</ul>
+	</footer>
+</body>
+
+</html>

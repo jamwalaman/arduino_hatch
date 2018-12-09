@@ -1,0 +1,147 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../arduinoStyle.css">
+        <title>Arduino Tutorial | Burglar Alarm | Stage 1</title>
+    </head>
+
+    <body>
+
+        <header>
+           <a href="../index.html"><img id="logo" src="../images/seehowlogo.png" alt="seeHOW logo"></a>
+
+            <nav>
+                <a href="../index.html">HOME</a>
+                <a href="nightlight.html">NIGHTLIGHT</a>
+                <a class="active" href="burglaralarm.html">BURGLAR ALARM</a>
+                <a href="about.html">ABOUT</a>
+            </nav>
+			<div id="subnav">
+				<a href="burglaralarmstage1.html" class="active">Stage 1</a>
+				<a href="burglaralarmstage2.html">Stage 2</a>
+				<a href="burglaralarmstage3.html">Stage 3</a>
+				<a href="burglaralarmstage4.html">Stage 4</a>
+			</div>
+        </header>
+
+        <article>
+
+            <h1>Sound it UP!</h1>
+			
+			<h2 class="stage">Burglar alarm: Stage 1</h2>
+
+            <h2>You will need</h2>
+            <ul>
+                <li>1 x Arduino board</li>
+                <li>1 x breadboard</li>
+                <li>1 x speaker (alarm) component</li>
+                <li>1 x short red (positive) cable</li>
+                <li>1 x short black (negative) cable</li>
+                <li>1 x mini-USB power cable</li>
+            </ul>
+			
+			<figure>
+				<figcaption>find these bits to begin</figcaption>
+				<img id="stretch" src="../images/burglaralarmstage1/step_1.jpg" alt="burglar alarm speaker">
+			</figure>
+
+            <p>1) The first step is to ensure the Arduino software has been installed on your computer. This is something for the teacher/demonstrator to do. Check with them that it has been done.</p>
+			
+			<div class="steps">
+				<img src="../images/burglaralarmstage1/Stage1.2.0_Alarm.jpg" alt="Step 2 Image">
+	            <p>2) Look at the pins on the speaker and notice which one is shorter, this is the negative pin. Plug the speaker into the breadboard connecting the two pins in the same column but different rows. <em>Remember the number of the pin you've used.</em></p>
+			</div>
+			
+            <div class="steps">
+				<img src="../images/burglaralarmstage1/Stage1.3.0_Alarm.jpg" alt="Step 3 Image">
+                <p>3) Plug the black cable into the same row as negative (short pin) of the speaker alarm on the breadboard. Connect the other end of black cable to the GND (ground) pin on the Arduino Board.</p>
+			</div>
+     
+            <div class="steps">    
+			<img src="../images/burglaralarmstage1/Stage1.4.0_Alarm.jpg" alt="Step 4 Image">
+			<p>4) Plug the red cable in the same row as the other end of the speaker alarm on breadboard. Connect the other end of the red cable any pin numbered between 2-13 on the Arduino Board.</p></div>
+            <div class="steps"> 	<p>5) Open the Arduino Software. Ask your demonstrator if you cannot find it. Open a new file and delete the text in the window. Copy and paste the following text (code) into the window (Need help? Ask your demonstrator):</p>	</div>
+        
+            <div class="steps">
+            <div id="code">
+<pre>
+
+<span class="blue">int</span> BUZZ_Pin = 12; <span class="grey">//change to the pin your speaker is connected into</span>
+
+<span class="blue">void</span> <span class="green">setup</span>() {
+    <span class="orange">pinMode</span>(BUZZ_Pin, <span class="blue">OUTPUT</span>);
+}
+<span class="blue">void</span> <span class="green">loop</span>() {
+    <span class="orange">digitalWrite</span>(BUZZ_Pin, <span class="blue">HIGH</span>); <span class="grey">//turns speaker on</span>
+    <span class="orange">delay</span>(50);
+    <span class="orange">digitalWrite</span>(BUZZ_Pin, <span class="blue">LOW</span>); <span class="grey">//turns speaker off</span>
+    <span class="orange">delay</span>(50);
+}
+
+
+
+
+
+
+
+
+</pre>
+            </div>
+
+				<p>6) Change BUZZ_Pin = __ to show the correct number of the pin you plugged your red (live) cable from the speaker into on the Arduino board (ie. change the ‘12’ to the correct value for your Arduino board). Using the Arduino software, go Sketch > Verify/Compile to ‘compile your code’ and go File > Save and save it as “burglaralarm.ino”. Next go Sketch > Upload to send it to your Arduino board. Once this has been completed, and program should return “Done uploading” and your alarm should should start making lots of loud beep beep beeps!</p>
+			</div> <br/>
+                        <h2> Not Working? Try This!</h2>
+                        <p>Please follow these steps to find out why:</p>
+                        <ol>
+                            <li>Take the speaker out, turn it round, and plug it back in. Does the alarm work now?</li>
+                            <li>Check your code.</li>
+                            <ol type="a">
+                                <li>Does it compile? If not check the brackets, extra letters etc that are out of place.</li>
+                                <li>Is it identifying the correct BUZZ_Pin number? Check that “int BUZZ_Pin = “ has the correct number that the red cable is plugged into on the Arduino board.</li></ol>
+                                <li>Check the connections on the breadboard.</li>
+                                <ol type="a">
+                                    <li>Check your breadboard looks like the picture at the end of step 4. If it does and your light is still not working, check that:</li>
+                                    <ol type="i">
+                                        <li>All the pins are pushed in.</li>
+                                        <li>Try using a different speaker.</li>
+                                        <li>Try using different cables. </li>
+                                        <li>If none of that gets your light working, ask your teacher/demonstrator for assistance.</li>
+                                    </ol>
+                                </ol>
+                            </ol>
+
+                   
+					<h2 id="pagination">
+						<a href="burglaralarmstage2.html">Next stage</a>
+					</h2>
+
+                        </article>
+
+	<footer>
+		<ul class="footerLinks">
+			<li><b><a href="../index.html">HOME</a></b></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="nightlight.html">NIGHTLIGHT</a></b></li>
+			<li><a href="nightlightstage1.html">Stage 1: Start it UP!</a></li>
+			<li><a href="nightlightstage2.html">Stage 2: Change it UP!</a></li>
+			<li><a href="nightlightstage3.html">Stage 3: Light it UP!</a></li>
+			<li><a href="nightlightstage4.html">Stage 4: Seriously CURIOUS!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="burglaralarm.html">BURGLAR ALARM</a></b></li>
+			<li><a href="burglaralarmstage1.html">Stage 1: Sound it UP!</li>
+			<li><a href="burglaralarmstage2.html">Stage 2: Sense it UP!</a></li>
+			<li><a href="burglaralarmstage3.html">Stage 3: Make some NOISE!</a></li>
+			<li><a href="burglaralarmstage4.html">Stage 4: Set it OFF!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="about.html">ABOUT</a></b></li>
+		</ul>
+	</footer>
+
+                    </body>
+
+                    </html>

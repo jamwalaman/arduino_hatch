@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../arduinoStyle.css">
+	<title>Arduino Tutorial | Burglar Alarm | Stage 3</title>
+</head>
+
+<body>
+
+	<header>
+		<a href="../index.html"><img id="logo" src="../images/seehowlogo.png" alt="seeHOW logo"></a>
+
+		<nav>
+			<a href="../index.html">HOME</a>
+			<a href="nightlight.html">NIGHTLIGHT</a>
+			<a class="active" href="burglaralarm.html">BURGLAR ALARM</a>
+			<a href="about.html">ABOUT</a>
+		</nav>
+			<div id="subnav">
+				<a href="burglaralarmstage1.html">Stage 1</a>
+				<a href="burglaralarmstage2.html">Stage 2</a>
+				<a href="burglaralarmstage3.html" class="active">Stage 3</a>
+				<a href="burglaralarmstage4.html">Stage 4</a>
+			</div>
+	</header>
+
+	<article>
+
+		<h1>Make some NOISE!</h1>
+		<h2 class="stage">Burglar alarm: Stage 3</h2>
+        
+        <p id="vidcaption">The working (and annoying) burglar catcher!</p>
+    	<video autoplay>
+        	<source src="../images/burglaralarmstage3/burglar_alarm_noise.mp4" type="video/mp4">
+            <source src="../images/burglaralarmstage3/burglar_alarm_noise.webm" type="video/webm">
+            Oops! Your browser does not support mp4 or webm html5 videos.
+        </video>
+        
+		<p>1) To get your sensor to work with your speaker, you need to tell the speaker to turn on when the PIR sensor detects an intruder. How? It’s easy just update the code since both the speaker and the PIR sensor are already working. Go back to the Arduino software, and open the nightlight.ino file you were using before and delete the text in the window. Copy and paste the following text (code) into your Arduino software:</p>
+		
+		<div id="code">
+<pre>
+<span class="blue">int</span> BUZZ_Pin = 12; <span class="grey">//change to the pin your speaker is connected into</span>
+<span class="blue">int</span> PIR_Pin = 4; <span class="grey">//change to the pin your PIR is connected into</span>
+<span class="blue">int</span> PIR_State = <span class="blue">LOW</span>;
+<span class="blue">int</span> PIR_Value = 0;
+<div id="codePadding">
+<span class="blue">void</span> <span class="green">setup</span>() {
+    <span class="orange">pinMode</span>(BUZZ_Pin, <span class="blue">OUTPUT</span>);
+	<span class="orange">pinMode</span>(PIR_Pin, <span class="blue">INPUT</span>);
+	<span class="orange">Serial.begin</span>(9600);
+}</div>
+
+<span class="blue">void</span> <span class="green">loop</span>() {
+    PIR_Value = <span class="orange">digitalRead</span>(PIR_Pin);
+    <span class="green">if</span>(PIR_Value == <span class="blue">HIGH</span>){
+    <span class="orange">digitalWrite</span>(BUZZ_Pin, <span class="blue">HIGH</span>); <span class="grey">//turns speaker alarm on</span>
+	  <span class="orange">delay</span>(50);
+	  <span class="orange">digitalWrite</span>(BUZZ_Pin, <span class="blue">LOW</span>); <span class="grey">//turns speaker alarm off</span>
+	  <span class="orange">delay</span>(50);
+	  <span class="green">if</span>(PIR_State == <span class="blue">LOW</span>){
+	    <span class="orange">Serial.println</span>(<span class="blue">"Intruder Alert!"</span>); <span class="grey">//displays message when burglar is detected</span>
+	    PIR_State = <span class="blue">HIGH</span>;
+	  }
+	}
+    <span class="green">else</span>{
+      <span class="green">if</span>(PIR_State = <span class="blue">HIGH</span>){
+        <span class="orange">Serial.println</span>(<span class="blue">"Intruder no longer detected"</span>); <span class="grey">//displays message when no burglar is detected</span>
+        PIR_State = <span class="blue">LOW</span>;
+      }
+    }
+}
+</pre>
+		</div>
+		
+		<div class="steps">
+		<p>2) Remember to change the BUZZ_Pin = __ and PIR_Pin = __ numbers to show the correct pin you plugged your cable from the speaker and PID Sensor into on the Arduino board </p>
+		
+		<p>3) Using the software, go Sketch > Verify/Compile to compile the code and File > Save and save it as “burglaralarm.ino”. Next go Sketch > Upload to send it to your Arduino board. Once this has been completed, and program should return “Done uploading.” The alarm should now sound when an intruder is detected, and you have a working burglar alarm! Wave your hand in front of the sensor for 5 seconds to see if it turns on, and then stay very still to see if it turns off.</p>
+		</div>
+		<h2>Not Working? Try This!</h2>
+		<ol>
+			<li>Check your code.</li>
+			<ol type="a">
+				<li>Does it compile? If not check the brackets, extra letters etc that are out of place.</li>
+				<li>Is it identifying the correct BUZZ_Pin and PIR_Pin numbers?</li>
+			</ol>
+			<li>Check the connections on the breadboard.</li>
+			<ol type="a">
+				<li>Check your breadboard looks like the picture at the end of step 1. If it does and you still do not get words in the window, check that:</li>
+				<ol type="i">
+					<li>All the pins are pushed in.</li>
+					<li>Try using a different PIR.</li>
+					<li>Try using different cables. </li>
+					<li>If none of that gets your light working, ask your teacher/demonstrator for assistance.</li>
+				</ol>
+			</ol>
+		</ol>
+		
+		<h2 id="paginationLeft">
+			<a href="burglaralarmstage2.html">Previous stage</a>
+		</h2>
+
+		<h2 id="pagination">
+			<a href="burglaralarmstage4.html">Next stage</a>
+		</h2>
+
+	</article>
+
+	<footer>
+		<ul class="footerLinks">
+			<li><b><a href="../index.html">HOME</a></b></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="nightlight.html">NIGHTLIGHT</a></b></li>
+			<li><a href="nightlightstage1.html">Stage 1: Start it UP!</a></li>
+			<li><a href="nightlightstage2.html">Stage 2: Change it UP!</a></li>
+			<li><a href="nightlightstage3.html">Stage 3: Light it UP!</a></li>
+			<li><a href="nightlightstage4.html">Stage 4: Seriously CURIOUS!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="burglaralarm.html">BURGLAR ALARM</a></b></li>
+			<li><a href="burglaralarmstage1.html">Stage 1: Sound it UP!</li>
+			<li><a href="burglaralarmstage2.html">Stage 2: Sense it UP!</a></li>
+			<li><a href="burglaralarmstage3.html">Stage 3: Make some NOISE!</a></li>
+			<li><a href="burglaralarmstage4.html">Stage 4: Set it OFF!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="about.html">ABOUT</a></b></li>
+		</ul>
+	</footer>
+
+</body>
+
+</html>

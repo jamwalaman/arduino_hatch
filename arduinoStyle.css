@@ -1,0 +1,311 @@
+/* Stylesheet Arduino Tutorial */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #9900FF;
+}
+
+p {
+    margin: 1em 0;
+    text-align: justify;
+}
+
+#bot {
+    border-bottom: 1px black solid;
+}
+
+ol, ul {
+    padding-left: 30px;
+    margin: 1em 0;
+}
+
+ul {
+	list-style: none;
+}
+
+h1 {
+	font-weight: bolder;
+    font-size: 4em;
+    color: #9900FF;
+    color: red;
+    font-style: italic;
+}
+
+
+h1, h2 {
+    font-family: "Arial Black";
+}
+
+h2 {
+	font-size: 2em;
+    margin-top: 1em;
+    color: #9900FF;
+}
+
+.stage {
+	margin: 0;
+	padding-bottom: 10px;
+	border-bottom: 4px solid #000;
+	color: #1DA6FF;
+}
+
+h3.HomeH3 {
+    color: #1DA6FF;
+}
+
+#make {
+    color: red;
+}
+
+body {
+    width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Verdana, sans-serif;
+    background-image: url("images/squairy_light.png");
+    background-attachment: fixed;
+}
+header {
+	width: 1064px;
+    height: 60px;
+    margin-top: 20px;
+}
+
+#logo {
+    width: 550px;
+    height: auto;
+    float: left;
+}
+
+nav {
+    overflow: hidden;
+    float: right;
+    border-radius: 15px;
+    background-color: #9900FF;
+    height: 60px;
+}
+
+nav a {
+    text-align: center;
+    margin: 20px 20px;
+    padding-bottom: 7px;
+    text-decoration: none;
+}
+
+#subnav {
+	float: right;
+	background-color: #000;
+	border-radius: 15px;
+	margin: 20px 0px;
+    height: 60px;
+}
+
+#subnav a {
+    padding: 12px;
+    text-decoration: none;
+    margin: 7px 10px;
+    padding-bottom: 10px;
+}
+
+nav a, #subnav a {
+	float: left;
+	display: block;
+	color: #fff;
+}
+
+nav a:hover, nav a.active, #subnav a:hover, #subnav a.active {
+    border-bottom: 4px solid #fff;
+}
+
+#nlIntroPic {
+    height: auto;
+    width: auto;
+    float: right;
+    padding-left: 20px;
+}
+
+article {
+    width: 1024px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 70px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    clear: both;
+}
+
+#homeList {
+	list-style: disc;
+}
+
+#code {
+    padding-left: 30px;
+    font-family: monospace;
+    float: left;
+}
+
+#code p {
+    font-size: 1.2em;
+}
+
+#codePadding {
+    padding: 5px 0px;
+}
+
+.blue {
+    color: #43b2b6;
+}
+
+.green {
+    color: #7a862f;
+}
+
+.orange {
+    color: #de7f40;
+}
+
+.grey {
+    color: #8d9598;
+}
+
+/**************************** COMMENTED OUT IMAGE-SETTINGS: ***************************
+.thumbnail img{
+    height: auto;
+    width: 50%;
+    opacity: 0.70; 
+}
+
+.thumbnail img:hover {
+    height: auto;
+    width: 833px;
+    opacity: 1.0;
+    transition-duration: 1s; /* delays for 1 second */
+   /* -webkit-transition-duration: 1s; /* for Safari & Chrome 
+}
+
+/**reduced image size on mouse over for tall images
+.tall_thumbnail img:hover {
+    height: auto;
+    width: 500px;
+    opacity: 1.0;
+    transition-duration: 1s; /* delays for 1 second */
+    /**-webkit-transition-duration: 1s; /* for Safari & Chrome 
+}
+
+    transition: opacity;
+    -moz-transition: opacity;
+    -webkit-transition: opacity;
+    transition:all 2s ease;
+}
+
+video:hover{
+        -webkit-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        transform: scale(1.5);
+        opacity: 1;
+}
+*/
+
+/* -webkit-transition: width 2s, height 2s, opacity 1.0; /* Safari */
+/* -webkit-transition-timing-function: linear; /* Safari */
+    /* transition: width 2s, height 2s, opacity 1.0;
+    /* transition-timing-function: linear; */
+
+    /* transition-duration: 1s; /* delays for 1 second */
+    /* -webkit-transition-duration: 1s; /* for Safari & Chrome */
+
+/*
+.gif img:hover {
+    height: auto;
+    width: 833px;
+}
+
+/*************************** COMMENTED OUT IMAGE-SETTINGS: ****************************/
+
+img {
+    height: auto;
+    width: 100%;
+}
+
+#ccImage {
+    height: auto;
+    width: auto;
+}
+
+video {
+    height: auto;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+figcaption {
+    color: #9900FF;
+    font-style: italic;
+    padding: 5px;
+}
+
+#vidcaption {
+    color: #9900FF;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.steps {
+	clear: both;
+	padding: 20px 0px;
+}
+
+.steps img{
+	float:left;
+	width: 70%;
+	height:auto;
+	margin-right: 20px;
+}
+
+.steps pre {
+	margin-right: 20px;
+}
+#paginationLeft a {
+	float: left;
+	text-decoration: none;
+}
+
+#pagination a {
+	float: right;
+	text-decoration: none;
+}
+
+#pagination a:hover, #paginationLeft a:hover{
+    border-bottom: 4px solid #9900FF;
+}
+
+footer {
+    clear: both;
+    color: #fff;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    height: 130px;
+    width: 1064px;
+    background-color: #9900FF;
+}
+
+footer a {
+	color: #fff;
+	font-size: 0.8em;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ccc;
+    text-decoration: underline;
+}
+
+.footerLinks {
+	float: left;
+    margin-right: 117px;
+}
+

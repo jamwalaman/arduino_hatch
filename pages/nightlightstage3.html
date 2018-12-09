@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../arduinoStyle.css">
+	<title>Arduino Tutorial | Nightlight | Stage 3</title>
+</head>
+
+<body>
+
+	<header>
+		<a href="../index.html"><img id="logo" src="../images/seehowlogo.png" alt="seeHOW logo"></a>
+
+		<nav>
+			<a href="../index.html">HOME</a>
+			<a class="active" href="nightlight.html">NIGHTLIGHT</a>
+			<a href="burglaralarm.html">BURGLAR ALARM</a>
+			<a href="about.html">ABOUT</a>
+		</nav>
+		
+		<div id="subnav">
+		<a href="nightlightstage1.html">Stage 1</a>
+		<a href="nightlightstage2.html">Stage 2</a>
+		<a href="nightlightstage3.html" class="active">Stage 3</a>
+		<a href="nightlightstage4.html">Stage 4</a>
+	</div>
+	</header>
+
+
+	<article>
+
+		<h1>Light it UP!</h1>
+		<h2 class="stage">Nightlight: Stage 3</h2>
+
+		<p>1) Now, go back to the Arduino software. Open the nightlight.ino file you were using before and delete the text in the window. Copy and paste the following text (code) into your Arduino software, replacing the ‘985’ used in the example code in the line (light_reading < 985) with the number you wrote down in the previous stage for what the light reading was when it was sitting in front of you:</p>
+        
+        <div class="steps">
+		<div id="code">
+<pre>           
+<span class="blue">int</span> LED_Pin = 3;<span class="grey"> //change to the pin your LED is connected to</span>
+<span class="blue">int</span> LDR_Pin = A1;<span class="grey"> //change to the pin your LDR is connected to</span>
+<span class="blue">int</span> light_reading;
+
+<span class="blue">void</span> <span class="green">setup</span>() {
+    <span class="orange">pinMode</span>(LED_Pin, <span class="blue">OUTPUT</span>);
+    <span class="orange">pinMode</span>(LDR_Pin, <span class="blue">INPUT</span>);
+    <span class="orange">Serial.begin</span>(9600);
+}
+
+<span class="blue">void</span> <span class="green">loop</span>() {
+    light_reading = <span class="orange">analogRead</span>(LDR_Pin);
+	<span class="orange">Serial.println</span>(light_reading);<span class="grey">  //displays the light reading value</span>
+	<span class="blue">if</span>(light_reading < 985) {<span class="grey">  //change to your light value in normal conditions</span>
+	<span class="orange">digitalWrite</span>(LED_Pin, <span class="blue">HIGH</span>);<span class="grey">  //turns LED on</span>
+	<span class="blue">} else </span><span class="orange">digitalWrite</span>(LED_Pin, <span class="blue">LOW</span>);<span class="grey">  //turns LED off</span>
+	<span class="orange">delay</span>(500);
+}
+</pre>  </div>
+        </div>
+		<p>2) Using the software, go Sketch > Verify/Compile to compile the code and save it as “nightlight.ino”. Next go Sketch > Upload to send it to your Arduino board. Once this has been completed, and program should return “Done uploading.” </p>
+		
+		<div class="steps">
+		<p>3) You should now have a fully operational nightlight! Move your hand over the LDR to check that the LED turns on, and that it turns off when you move your hand away.</p>
+		</div>
+		
+		<h2>Power it UP</h2>
+
+        <img id="ccImage" src="../images/nightlightstage3/step_4.gif" alt="Step 4 gif">
+		<p>Once your nightlight is fully operational, you can unplug it from the mini-USB cable and make it battery powered using the battery cable and the 9V battery. This allows the night light to be fully portable, and you can now set it up anywhere you wish!</p>
+        
+		<h2>Not Working? Try This!</h2>
+
+		<p>If your nightlight is not working, please follow these steps to find out why:</p>
+
+		<ol>
+			<li>Check your code.</li>
+			<ol type="a">
+				<li>Does it compile? If not check the brackets, extra letters etc that are out of place.</li>
+				<li>Is it identifying the correct LED_Pin and LDR_Pin numbers?</li>
+			</ol>
+			<li>Check the connections on the breadboard.</li>
+			<ol type="a">
+				<li>Check your breadboard looks like the picture at the end of step 7. If it does and your light is still not working, check that:</li>
+				<ol type="i">
+					<li>All the pins are pushed in.</li>
+					<li>Try using a different LDR and different LED.</li>
+					<li>Try using different red, black and white cables.</li>
+					<li>If none of that gets your light working, ask your teacher/demonstrator for assistance.</li>
+				</ol>
+			</ol>
+		</ol>
+			
+		
+		<h2 id="paginationLeft">
+			<a href="nightlightstage2.html">Previous stage</a>
+		</h2>
+
+		<h2 id="pagination">
+			<a href="nightlightstage4.html">Next stage</a>
+		</h2>
+
+	</article>
+
+	<footer>
+		<ul class="footerLinks">
+			<li><b><a href="../index.html">HOME</a></b></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="nightlight.html">NIGHTLIGHT</a></b></li>
+			<li><a href="nightlightstage1.html">Stage 1: Start it UP!</a></li>
+			<li><a href="nightlightstage2.html">Stage 2: Change it UP!</a></li>
+			<li><a href="nightlightstage3.html">Stage 3: Light it UP!</a></li>
+			<li><a href="nightlightstage4.html">Stage 4: Seriously CURIOUS!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="burglaralarm.html">BURGLAR ALARM</a></b></li>
+			<li><a href="burglaralarmstage1.html">Stage 1: Sound it UP!</li>
+			<li><a href="burglaralarmstage2.html">Stage 2: Sense it UP!</a></li>
+			<li><a href="burglaralarmstage3.html">Stage 3: Make some NOISE!</a></li>
+			<li><a href="burglaralarmstage4.html">Stage 4: Set it OFF!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="about.html">ABOUT</a></b></li>
+		</ul>
+	</footer>
+
+</body>
+
+</html>

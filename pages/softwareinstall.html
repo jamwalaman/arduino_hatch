@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../arduinoStyle.css">
+	<title>Arduino Tutorial | Arduino Software Install</title>
+</head>
+
+<body>
+
+	<header>
+		<a href="../index.html"><img id="logo" src="../images/seehowlogo.png" alt="seeHOW logo"></a>
+
+		<nav>
+			<a href="../index.html">HOME</a>
+			<a href="nightlight.html">NIGHTLIGHT</a>
+			<a href="burglaralarm.html">BURGLAR ALARM</a>
+			<a href="about.html">ABOUT</a>
+		</nav>
+	</header>
+	
+	<div id="white">
+
+		<article>
+
+			<h1>Arduino Software Update</h1>
+<p>To successfully install the software so that the kids do not require further assistance, please plug in an Arduino board to your computer to a USB port as part of this installation process.</p>
+			<p>The instructions are very slightly different for Mac and Windows installs.</p>
+<ol>
+			<li>Go to the Arduino Software <a href="https://www.arduino.cc/en/Main/Software">page</a> and scroll down to the “Download the Arduino IDE” section. Select the correct file relating to your operating system and download it onto your computer.</li>
+    <li>Open the downloaded file and follow the instructions to install it onto your computer. </li>
+    <ol type="a">
+        <li>If you have a Windows machine, it also prompts you to install a USB driver which has been bundled with the downloaded file - this is required for the Arduino board to connect to the computer, so this driver can be safely installed.</li>
+        <li>If you have a Mac, please download a <a href="http://www.wch.cn/download/CH341SER_MAC_ZIP.html">driver</a> and install it onto your machine.</li>
+    </ol>
+    <li>Open the software and test the connection.</li>
+    <ol type="a">
+        <li>If you have a Windows machine, go to Tools > Port and select the COM port which corresponds to the USB port the Arduino board is plugged into. If you do not know which port you are using, open a new file (File > New) and upload it to the Arduino board (Sketch > Upload). Change the port selected under Port > Tools until the upload is successful and does not return an error message - the program will return “Done uploading.”</li>
+        <li>If you have a Mac and have successfully installed the driver above, go to Tools > Port and select the option which looks like this “/dev/cu....”. Test the connection by opening a new file (File > New) and uploading it to the Arduino board (Sketch > Upload). If it’s been successful, the program will return “Done uploading.”</li>
+    </ol>
+        <li>Select the correct type of Arduino board. Go to Tools > Board and select "Arduino/Genuino Uno" from the drop-down menu selection.</li>
+    </ol>
+			<p><a href="nightlight.html">Click here to go back to the nightlight tutorial.</a></p>
+			<p><a href="burglaralarm.html">Click here to go back to the burglar alarm tutorial.</a></p>
+		</article>
+	</div>
+
+	<footer>
+		<ul class="footerLinks">
+			<li><b><a href="../index.html">HOME</a></b></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="nightlight.html">NIGHTLIGHT</a></b></li>
+			<li><a href="nightlightstage1.html">Stage 1: Start it UP!</a></li>
+			<li><a href="nightlightstage2.html">Stage 2: Change it UP!</a></li>
+			<li><a href="nightlightstage3.html">Stage 3: Light it UP!</a></li>
+			<li><a href="nightlightstage4.html">Stage 4: Seriously CURIOUS!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="burglaralarm.html">BURGLAR ALARM</a></b></li>
+			<li><a href="burglaralarmstage1.html">Stage 1: Sound it UP!</li>
+			<li><a href="burglaralarmstage2.html">Stage 2: Sense it UP!</a></li>
+			<li><a href="burglaralarmstage3.html">Stage 3: Make some NOISE!</a></li>
+			<li><a href="burglaralarmstage4.html">Stage 4: Set it OFF!</a></li>
+		</ul>
+		<ul class="footerLinks">
+			<li><b><a href="about.html">ABOUT</a></b></li>
+		</ul>
+	</footer>
+
+</body>
+
+</html>
